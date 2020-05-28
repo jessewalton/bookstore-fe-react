@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, ChangeEvent } from 'react';
 import logo from './logo.svg';
 import './App.css';
 
@@ -7,6 +7,11 @@ import HackerNewsList from './HackerNewsList';
 import BookList from './BookList';
 
 function App() {
+  const [searchQuery, setSearchQuery] = useState("");
+
+  function handleChange(event: any) {
+    setSearchQuery(event?.target?.value);
+  }
 
   return (
     <div className="App">
@@ -26,9 +31,12 @@ function App() {
 
 
       </header>
+
       <Greeting name="stranger"/>
-        <BookList />
-        <HackerNewsList query="test" />
+      <BookList />
+
+      <input onChange={(e: ChangeEvent) => {handleChange(e);}} />
+      <HackerNewsList query={searchQuery} />
     </div>
   );
 }
