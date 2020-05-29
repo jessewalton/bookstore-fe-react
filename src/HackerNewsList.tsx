@@ -7,13 +7,20 @@ interface dataTypes {
   title: string,
 }
 
-function HackerNewsList(props: any) {
+interface SearchProps {
+  path: string,
+  query: string,
+}
+
+function HackerNewsList(props: SearchProps) {
 
   const [data, setData] = useState<dataTypes[]>([]);
   
   useEffect(() => {
+    const path: string = props.path || "";
     const query: string = props.query || "";
-    const request: string = `https://hn.algolia.com/api/v1/search?query=${query}`;
+  
+    const request: string = `${path}${query}`;
     const fetchData = async () => {
       const result: any = await axios.get(request);
       

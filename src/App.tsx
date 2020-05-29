@@ -9,6 +9,8 @@ import BookList from './BookList';
 function App() {
   const [searchQuery, setSearchQuery] = useState("");
 
+  const HackerNewsSearchPath: string = 'https://hn.algolia.com/api/v1/search?query=';
+
   function handleChange(event: any) {
     setSearchQuery(event?.target?.value);
   }
@@ -36,7 +38,10 @@ function App() {
       <BookList />
 
       <input onChange={(e: ChangeEvent) => {handleChange(e);}} />
-      <HackerNewsList query={searchQuery} />
+      <HackerNewsList 
+        path={HackerNewsSearchPath}
+        query={searchQuery} 
+      />
     </div>
   );
 }
