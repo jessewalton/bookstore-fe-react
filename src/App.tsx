@@ -3,17 +3,10 @@ import logo from './logo.svg';
 import './App.css';
 
 import Greeting from './Greeting';
-import HackerNewsList from './HackerNewsList';
 import BookList from './BookList';
+import HackerNewsSearch from './HackerNewsSearch';
 
 function App() {
-  const [searchQuery, setSearchQuery] = useState("");
-
-  const HackerNewsSearchPath: string = 'https://hn.algolia.com/api/v1/search?query=';
-
-  function handleChange(event: any) {
-    setSearchQuery(event?.target?.value);
-  }
 
   return (
     <div className="App">
@@ -30,18 +23,12 @@ function App() {
         >
           Learn React
         </a>
-
-
       </header>
 
       <Greeting name="stranger"/>
+      <HackerNewsSearch />
       <BookList />
 
-      <input onChange={(e: ChangeEvent) => {handleChange(e);}} />
-      <HackerNewsList 
-        path={HackerNewsSearchPath}
-        query={searchQuery} 
-      />
     </div>
   );
 }
