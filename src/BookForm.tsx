@@ -1,26 +1,28 @@
-// import React from 'react';
-import React, { useState, useEffect } from "react";
+import React from "react";
+// import React, { useState, useEffect } from "react";
+
 
 import { useForm } from "react-hook-form";
 
 import axios from "axios";
 
-interface Book {
-  id: number;
-  author: string;
-  title: string;
-  url: string;
-}
+// interface Book {
+//   id: number;
+//   author: string;
+//   title: string;
+//   url: string;
+// }
 
 function BookForm() {
   // const [data, setData] = useState<Book[]>([]);
 
   const { register, handleSubmit, watch, errors } = useForm();
-  const onSubmit = (formData: any) => {
+
+  const onSubmit = async (formData: any) => {
     console.log("onSubmit");
     console.log(formData);
 
-    const fetchData = async () => {
+    // const fetchData = async () => {
 
       // post form data to endpoint
       const post: any = await axios.post('http://localhost:8080/books', {
@@ -31,9 +33,9 @@ function BookForm() {
       // get data from endpoint
       // const result: any = await axios.get("http://localhost:8080/books");
       // setData(result.data.data);
-    };
+    // };
 
-    fetchData();
+    // fetchData();
   };
 
   console.log(watch("title")); // watch input value by passing the name of it
