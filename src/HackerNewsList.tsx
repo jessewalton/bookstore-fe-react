@@ -28,7 +28,7 @@ function HackerNewsList(props: SearchProps) {
     };
 
     fetchData();
-  }, [props.query]);
+  }, [props.path, props.query]);
 
   return (
     <ul>

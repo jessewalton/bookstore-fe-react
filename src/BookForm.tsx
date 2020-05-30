@@ -25,7 +25,7 @@ function BookForm() {
     // const fetchData = async () => {
 
       // post form data to endpoint
-      const post: any = await axios.post('http://localhost:8080/books', {
+      await axios.post('http://localhost:8080/books', {
         title: formData.title,
         author: formData.author,
       });
