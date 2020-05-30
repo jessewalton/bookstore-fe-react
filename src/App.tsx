@@ -5,6 +5,7 @@ import './App.css';
 import Greeting from './Greeting';
 import BookList from './BookList';
 import HackerNewsSearch from './HackerNewsSearch';
+import BookForm from './BookForm';
 
 function App() {
 
@@ -27,6 +28,9 @@ function App() {
 
       <Greeting name="stranger"/>
       <HackerNewsSearch />
+
+      <BookForm />
+    
       <BookList />
 
     </div>
