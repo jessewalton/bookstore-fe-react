@@ -7,6 +7,8 @@ import BookList from "./BookList";
 import HackerNewsSearch from "./HackerNewsSearch";
 import BookForm from "./BookForm";
 
+// todo: add material ui
+// todo: rerender page on ws
 function App() {
   // create echo ws
 
