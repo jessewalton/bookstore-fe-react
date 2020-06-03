@@ -10,39 +10,6 @@ import BookForm from "./BookForm";
 // todo: add material ui
 // todo: rerender page on ws
 function App() {
-  // create echo ws
-
-  const echoWS: any = useRef(null);
-
-  useEffect(() => {
-    echoWS.current = new WebSocket("wss://echo.websocket.org");
-    echoWS.current.onopen = () => console.log("echo ws opened");
-    echoWS.current.onclose = () => console.log("echo ws closed");
-
-    return () => {
-      echoWS.current.close();
-    };
-  }, []);
-
-  useEffect(() => {
-    if (!echoWS.current) {
-      console.log("no websocket available");
-      return;
-    }
-
-    echoWS.current.onmessage = (e: any) => {
-      // const message = JSON.parse(e.data);
-      console.log("receive:", e.data);
-    };
-  }, []);
-
-  function sendToEcho(data: string) {
-    console.log("send   :", data);
-    echoWS.current.send(data);
-  }
-
-  // end echo ws
-
   // create book ws
 
   const bookWS: any = useRef(null);
@@ -101,7 +68,6 @@ function App() {
 
       <button
         onClick={() => {
-          sendToEcho("test to echo");
           sendToBackend("test to backend ");
         }}
       >
