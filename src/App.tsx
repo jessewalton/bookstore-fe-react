@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import logo from "./logo.svg";
 import "./App.css";
 
@@ -13,6 +13,7 @@ function App() {
   // create book ws
 
   const bookWS: any = useRef(null);
+  const [toggle, setToggle] = useState(false);
 
   useEffect(() => {
     bookWS.current = new WebSocket("ws://localhost:8080/ws");
@@ -39,6 +40,11 @@ function App() {
       const message = JSON.parse(e.data);
       console.log("receive:", e.data);
       console.log(message);
+      
+      setToggle(t => { 
+        console.log("toggle toggle", t);
+        return !t 
+      });
     };
   }, []);
 
@@ -79,7 +85,8 @@ function App() {
 
       <BookForm />
 
-      <BookList />
+
+      <BookList toggle={toggle} />
     </div>
   );
 }
