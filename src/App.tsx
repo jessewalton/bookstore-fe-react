@@ -62,8 +62,14 @@ function App() {
     }
 
     bookWS.current.onmessage = (e: any) => {
-      // const message = JSON.parse(e.data);
+      // fix this
+      if (!e || !e.data) {
+        console.log("WS improperly formatted, ignoring");
+        return;
+      }
+      const message = JSON.parse(e.data);
       console.log("receive:", e.data);
+      console.log(message);
     };
   }, []);
 
