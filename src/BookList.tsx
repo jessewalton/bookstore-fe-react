@@ -52,9 +52,13 @@ function BookList(props: BookListProps) {
       {data &&
         data.map((item: Book) => (
           <li key={item.id}>
-            <a href={item.url}>
+            {item.url && <a href={item.url}>
               {item.title} by {item.author}
-            </a>
+            </a>}
+            {!item.url && <>
+              {item.title} by {item.author}
+              </>
+            }
           </li>
         ))}
     </ul>
